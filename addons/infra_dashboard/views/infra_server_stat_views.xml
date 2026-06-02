@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Vue Graphique en barres : VMs par serveur -->
+    <record id="view_server_stat_bar" model="ir.ui.view">
+        <field name="name">infra.server.stat.graph.bar</field>
+        <field name="model">infra.server.stat</field>
+        <field name="arch" type="xml">
+            <graph string="VMs par serveur" type="bar">
+                <field name="name" type="row"/>
+                <field name="vm_count" type="measure" string="Nombre de VMs"/>
+                <field name="ram" type="measure" string="RAM (Go)"/>
+            </graph>
+        </field>
+    </record>
+ 
+    <!-- Vue Graphique camembert : répartition par état -->
+    <record id="view_server_stat_pie" model="ir.ui.view">
+        <field name="name">infra.server.stat.graph.pie</field>
+        <field name="model">infra.server.stat</field>
+        <field name="arch" type="xml">
+            <graph string="Répartition des serveurs par état" type="pie">
+                <field name="state" type="row"/>
+                <field name="vm_count" type="measure"/>
+            </graph>
+        </field>
+    </record>
+ 
+    <!-- Vue Pivot (TCD) : RAM et CPUs par serveur -->
+    <record id="view_server_stat_pivot" model="ir.ui.view">
+        <field name="name">infra.server.stat.pivot</field>
+        <field name="model">infra.server.stat</field>
+        <field name="arch" type="xml">
+            <pivot string="Ressources par serveur">
+                <field name="name" type="row"/>
+                <field name="state" type="col"/>
+                <field name="vm_count" type="measure" string="VMs hébergées"/>
+                <field name="ram" type="measure" string="RAM (Go)"/>
+                <field name="cpu" type="measure" string="CPUs"/>
+            </pivot>
+        </field>
+    </record>
+ 
+    <!-- Vue Liste : détail par serveur -->
+    <record id="view_server_stat_list" model="ir.ui.view">
+        <field name="name">infra.server.stat.list</field>
+        <field name="model">infra.server.stat</field>
+        <field name="arch" type="xml">
+            <list string="Statistiques par serveur">
+                <field name="name"/>
+                <field name="state"/>
+                <field name="vm_count" string="VMs hébergées"/>
+                <field name="ram" string="RAM (Go)"/>
+                <field name="cpu" string="CPUs"/>
+            </list>
+        </field>
+    </record>
+ 
+    <!-- Action pour infra.server.stat -->
+    <record id="action_infra_server_stat" model="ir.actions.act_window">
+        <field name="name">Analyse par Serveur</field>
+        <field name="res_model">infra.server.stat</field>
+        <field name="view_mode">graph,pivot,list</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_infra_dashboard,infra.dashboard,model_infra_dashboard,,1,1,1,0
+access_infra_server_stat,infra.server.stat,model_infra_server_stat,,1,0,0,0

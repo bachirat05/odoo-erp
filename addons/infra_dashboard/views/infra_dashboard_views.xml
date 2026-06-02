@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ 
+    <!-- ══════════════════════════════════════════════════════════════
+         VUES POUR : infra.dashboard  (rapport global)
+    ═══════════════════════════════════════════════════════════════ -->
+ 
+    <!-- Vue Formulaire : affiche toutes les stats calculées -->
+    <record id="view_infra_dashboard_form" model="ir.ui.view">
+        <field name="name">infra.dashboard.form</field>
+        <field name="model">infra.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Tableau de bord Infrastructure">
+                <header>
+                    <button name="action_refresh"
+                            string="🔄 Rafraîchir les statistiques"
+                            type="object"
+                            class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Nom du rapport..."/></h1>
+                    </div>
+ 
+                    <!-- BLOC 1 : Serveurs -->
+                    <group string="📊 Statistiques Serveurs">
+                        <group>
+                            <field name="total_servers"/>
+                            <field name="servers_available"/>
+                            <field name="servers_in_use"/>
+                            <field name="servers_maintenance"/>
+                        </group>
+                        <group>
+                            <field name="server_usage_rate" widget="percentage"/>
+                            <field name="total_ram"/>
+                            <field name="total_cpu"/>
+                            <field name="total_storage"/>
+                        </group>
+                    </group>
+ 
+                    <!-- BLOC 2 : VMs -->
+                    <group string="🖥️ Statistiques Machines Virtuelles">
+                        <group>
+                            <field name="total_vms"/>
+                            <field name="vms_running"/>
+                            <field name="vms_stopped"/>
+                            <field name="vms_allocated"/>
+                        </group>
+                        <group>
+                            <field name="vm_usage_rate" widget="percentage"/>
+                            <field name="ram_allocated_vms"/>
+                            <field name="cpu_allocated_vms"/>
+                        </group>
+                    </group>
+ 
+                    <!-- BLOC 3 : Clusters -->
+                    <group string="🔗 Statistiques Clusters">
+                        <field name="total_clusters"/>
+                        <field name="avg_vms_per_cluster"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+ 
+    <!-- Vue Liste : résumé des rapports -->
+    <record id="view_infra_dashboard_list" model="ir.ui.view">
+        <field name="name">infra.dashboard.list</field>
+        <field name="model">infra.dashboard</field>
+        <field name="arch" type="xml">
+            <list string="Rapports Dashboard">
+                <field name="name"/>
+                <field name="total_servers"/>
+                <field name="server_usage_rate" string="Utilisation serveurs (%)"/>
+                <field name="total_vms"/>
+                <field name="vms_stopped" string="VMs inutilisées"/>
+                <field name="vm_usage_rate" string="Utilisation VMs (%)"/>
+                <field name="total_clusters"/>
+            </list>
+        </field>
+    </record>
+ 
+    <!-- Action pour infra.dashboard -->
+    <record id="action_infra_dashboard" model="ir.actions.act_window">
+        <field name="name">Rapports Dashboard</field>
+        <field name="res_model">infra.dashboard</field>
+        <field name="view_mode">list,form</field>
+    </record>
+ 
+</odoo>
