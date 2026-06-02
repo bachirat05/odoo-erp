@@ -13,7 +13,7 @@
             <form string="Tableau de bord Infrastructure">
                 <header>
                     <button name="action_refresh"
-                            string="🔄 Rafraîchir les statistiques"
+                            string=" Rafraîchir les statistiques"
                             type="object"
                             class="btn-primary"/>
                 </header>
@@ -23,7 +23,7 @@
                     </div>
  
                     <!-- BLOC 1 : Serveurs -->
-                    <group string="📊 Statistiques Serveurs">
+                    <group string=" Statistiques Serveurs">
                         <group>
                             <field name="total_servers"/>
                             <field name="servers_available"/>
@@ -39,7 +39,7 @@
                     </group>
  
                     <!-- BLOC 2 : VMs -->
-                    <group string="🖥️ Statistiques Machines Virtuelles">
+                    <group string=" Statistiques Machines Virtuelles">
                         <group>
                             <field name="total_vms"/>
                             <field name="vms_running"/>
@@ -54,7 +54,7 @@
                     </group>
  
                     <!-- BLOC 3 : Clusters -->
-                    <group string="🔗 Statistiques Clusters">
+                    <group string=" Statistiques Clusters">
                         <field name="total_clusters"/>
                         <field name="avg_vms_per_cluster"/>
                     </group>

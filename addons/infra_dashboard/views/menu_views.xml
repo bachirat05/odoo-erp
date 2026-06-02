@@ -10,7 +10,7 @@
     <!-- Sous-menu : Tableau de bord global -->
     <menuitem
         id="menu_infra_dashboard_main"
-        name="📋 Rapport Global"
+        name="Rapport Global"
         parent="menu_infra_dashboard_root"
         action="action_infra_dashboard"
         sequence="1"/>
@@ -18,7 +18,7 @@
     <!-- Sous-menu : Analyse graphique par serveur -->
     <menuitem
         id="menu_infra_server_stat"
-        name="📊 Analyse par Serveur"
+        name="Analyse par Serveur"
         parent="menu_infra_dashboard_root"
         action="action_infra_server_stat"
         sequence="2"/>
