@@ -6,7 +6,7 @@ class InfraVM(models.Model):
 
     name = fields.Char(string='Nom de la VM', required=True)
     ram = fields.Integer(string='RAM allouée (Go)')
-    cpu = fields.Integer(string='vCPUs')
+    cpu = fields.Integer(string='CPUs')
     storage = fields.Integer(string='Stockage (Go)')
     os = fields.Char(string='OS')
     server_id = fields.Many2one('infra.server', string='Serveur hôte')
