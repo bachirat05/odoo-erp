@@ -33,6 +33,7 @@
         <field name="ram"/>
         <field name="cpu"/>
         <field name="state"/>
+        
       </list>
     </field>
   </record>
