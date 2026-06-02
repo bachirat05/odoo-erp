@@ -16,6 +16,7 @@
             <field name="server_id"/>
             <field name="cluster_id"/>
           </group>
+          
           <notebook>
             <page string="Adresses IP">
               <field name="ip_ids"/>
