@@ -1,0 +1,11 @@
+<odoo>
+  <!-- Menu principal -->
+  <menuitem id="menu_infra_access_root" name="Infra Access Workflow" sequence="20"/>
+
+  <!-- Sous-menu Demandes -->
+  <menuitem id="menu_infra_access_requests"
+            name="Demandes de Ressources"
+            parent="menu_infra_access_root"
+            action="action_infra_access_request"
+            sequence="1"/>
+</odoo>

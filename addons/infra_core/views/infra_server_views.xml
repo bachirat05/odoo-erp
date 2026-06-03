@@ -1,0 +1,46 @@
+<odoo>
+  <record id="view_infra_server_form" model="ir.ui.view">
+    <field name="name">infra.server.form</field>
+    <field name="model">infra.server</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="state"/>
+            <field name="os"/>
+            <field name="ram"/>
+            <field name="cpu"/>
+            <field name="storage"/>
+          </group>
+          <notebook>
+            <page string="Machines Virtuelles">
+              <field name="vm_ids"/>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_infra_server_list" model="ir.ui.view">
+    <field name="name">infra.server.list</field>
+    <field name="model">infra.server</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="name"/>
+        <field name="os"/>
+        <field name="ram"/>
+        <field name="cpu"/>
+        <field name="state"/>
+        
+      </list>
+    </field>
+  </record>
+
+  <record id="action_infra_server" model="ir.actions.act_window">
+    <field name="name">Serveurs</field>
+    <field name="res_model">infra.server</field>
+    <field name="view_mode">list,form</field>
+  </record>
+</odoo>

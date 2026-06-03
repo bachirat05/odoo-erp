@@ -1,0 +1,28 @@
+<odoo>
+  <!-- Menu principal -->
+  <menuitem id="menu_infra_root" name="Infra Core" sequence="10"/>
+  <!-- Sous-menu Serveurs -->
+  <menuitem id="menu_infra_servers" 
+            name="Serveurs" 
+            parent="menu_infra_root"
+            action="action_infra_server" 
+            sequence="1" />
+  <!-- Sous-menu VMs -->
+  <menuitem id="menu_infra_vms" 
+            name="Machines Virtuelles" 
+            parent="menu_infra_root"
+            action="action_infra_vm" 
+            sequence="2" />
+    <!-- Sous-menu Clusters -->
+  <menuitem id="menu_infra_clusters"
+            name="Clusters"
+            parent="menu_infra_root"
+            action="action_infra_cluster"
+            sequence="3"/>
+    <!-- Sous-menu IP -->
+  <menuitem id="menu_infra_ips"
+            name="Adresses IP"
+            parent="menu_infra_root"
+            action="action_infra_ip"
+            sequence="4"/>
+</odoo>

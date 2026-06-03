@@ -1,0 +1,66 @@
+<odoo>
+  <!-- Vue Formulaire -->
+  <record id="view_infra_access_request_form" model="ir.ui.view">
+    <field name="name">infra.access.request.form</field>
+    <field name="model">infra.access.request</field>
+    <field name="arch" type="xml">
+      <form>
+        <header>
+          <button name="action_submit" string="Soumettre" type="object"
+                  invisible="state != 'draft'" class="btn-primary"/>
+          <button name="action_allocate" string="Allouer" type="object"
+                  invisible="state != 'pending'" class="btn-success"/>
+          <button name="action_return" string="Marquer comme rendu" type="object"
+                  invisible="state != 'allocated'"/>
+          <button name="action_reset_draft" string="Remettre en brouillon" type="object"
+                  invisible="state != 'pending'"/>
+          <field name="state" widget="statusbar"
+                 statusbar_visible="draft,pending,allocated,returned"/>
+        </header>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="requester_id"/>
+            <field name="project"/>
+          </group>
+          <group>
+            <field name="vm_id"/>
+            <field name="server_id"/>
+            <field name="date_start"/>
+            <field name="date_end"/>
+            <field name="duration_days" readonly="1"/>
+          </group>
+          <group string="Détails">
+            <field name="reason"/>
+            <field name="notes"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- Vue Liste -->
+  <record id="view_infra_access_request_list" model="ir.ui.view">
+    <field name="name">infra.access.request.list</field>
+    <field name="model">infra.access.request</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="name"/>
+        <field name="requester_id"/>
+        <field name="project"/>
+        <field name="vm_id"/>
+        <field name="date_start"/>
+        <field name="date_end"/>
+        <field name="duration_days"/>
+        <field name="state"/>
+      </list>
+    </field>
+  </record>
+
+  <!-- Action -->
+  <record id="action_infra_access_request" model="ir.actions.act_window">
+    <field name="name">Demandes de Ressources</field>
+    <field name="res_model">infra.access.request</field>
+    <field name="view_mode">list,form</field>
+  </record>
+</odoo>
