@@ -1,0 +1,117 @@
+<odoo>
+    <template id="template_infra_support" name="Demande IT">
+        <t t-call="website.layout">
+            
+            <section class="s_text_image pt-5 pb-5 bg-light">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <h1 class="display-4 fw-bold text-primary">Portail Infrastructure IT</h1>
+                            <p class="lead text-muted">Gérez vos ressources, demandez de nouvelles machines virtuelles ou signalez un incident technique en quelques secondes.</p>
+                        </div>
+                        <div class="col-lg-4 text-center d-none d-lg-block">
+                            <i class="fa fa-server fa-5x text-secondary opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="pt-5 pb-5 bg-200">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="card shadow-lg border-0 rounded-3">
+                                <div class="card-header bg-white border-0 pt-4 pb-0 text-center">
+                                    <h3 class="mb-0"><i class="fa fa-ticket text-primary"></i> Nouvelle Requête</h3>
+                                </div>
+                                <div class="card-body p-4 p-md-5">
+                                    <form action="/infra/support/submit" method="POST">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        
+                                        <div class="row mb-4">
+                                            <div class="col-md-8">
+                                                <label class="form-label fw-bold text-dark"><i class="fa fa-pencil text-muted"></i> Sujet de la demande</label>
+                                                <input type="text" class="form-control form-control-lg bg-light border-0" name="name" required="1" placeholder="Ex: Déploiement d'une nouvelle VM Linux..."/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label fw-bold text-dark"><i class="fa fa-tag text-muted"></i> Type d'intervention</label>
+                                                <select class="form-select form-select-lg bg-light border-0" name="type" required="1">
+                                                    <option value="access">🚀 Demande d'accès</option>
+                                                    <option value="issue">⚠️ Problème Technique</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-4 p-4 rounded" style="background-color: #f8f9fa;">
+                                            <h5 class="mb-3 text-secondary border-bottom pb-2">Cibler une ressource existante (Optionnel)</h5>
+                                            <div class="col-md-6 mb-3 mb-md-0">
+                                                <label class="form-label fw-bold text-dark"><i class="fa fa-database text-muted"></i> Serveur concerné</label>
+                                                <select class="form-select bg-white" name="server_id">
+                                                    <option value="">-- Aucun --</option>
+                                                    <t t-foreach="servers" t-as="server">
+                                                        <option t-att-value="server.id"><t t-esc="server.name"/></option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label fw-bold text-dark"><i class="fa fa-laptop text-muted"></i> Machine Virtuelle</label>
+                                                <select class="form-select bg-white" name="vm_id">
+                                                    <option value="">-- Aucune --</option>
+                                                    <t t-foreach="vms" t-as="vm">
+                                                        <option t-att-value="vm.id"><t t-esc="vm.name"/></option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-5">
+                                            <label class="form-label fw-bold text-dark"><i class="fa fa-align-left text-muted"></i> Description détaillée</label>
+                                            <textarea class="form-control bg-light border-0" name="description" rows="6" required="1" placeholder="Expliquez votre besoin en détail (OS, RAM, CPU attendus, ou description précise de l'erreur)..."></textarea>
+                                        </div>
+                                        
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                            <button type="reset" class="btn btn-light btn-lg me-md-2 px-4">Effacer</button>
+                                            <button type="submit" class="btn btn-primary btn-lg shadow px-5"><i class="fa fa-paper-plane"></i> Envoyer la demande</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+
+    <template id="template_infra_success" name="Demande Envoyée">
+        <t t-call="website.layout">
+            <div class="container text-center py-5 mt-5 mb-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card shadow-lg border-0 rounded-3 p-5">
+                            <div class="mb-4">
+                                <i class="fa fa-check-circle text-success" style="font-size: 7rem;"></i>
+                            </div>
+                            <h2 class="display-5 fw-bold text-dark">Mission accomplie !</h2>
+                            <p class="lead text-muted mt-3">Votre requête a été transmise avec succès à notre équipe DSI. Vous serez notifié de son avancement très prochainement.</p>
+                            
+                            <hr class="my-4 w-50 mx-auto"/>
+                            
+                            <div class="mt-4">
+                                <a href="/infra/support" class="btn btn-outline-primary btn-lg me-2 mb-2"><i class="fa fa-plus"></i> Nouvelle demande</a>
+                                <a href="/" class="btn btn-primary btn-lg mb-2"><i class="fa fa-home"></i> Retour à l'accueil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    
+    <record id="menu_infra_request_website" model="website.menu">
+        <field name="name">Support IT</field>
+        <field name="url">/infra/support</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">50</field>
+    </record>
+</odoo>

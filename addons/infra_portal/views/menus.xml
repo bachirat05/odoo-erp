@@ -1,0 +1,7 @@
+<odoo>
+  <menuitem id="menu_infra_web_requests" 
+            name="Requêtes Web" 
+            parent="infra_core.menu_infra_root"
+            action="action_infra_request" 
+            sequence="20" />
+</odoo>
