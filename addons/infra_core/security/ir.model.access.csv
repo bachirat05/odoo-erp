@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_infra_server,infra.server,model_infra_server,,1,1,1,1
+access_infra_vm,infra.vm,model_infra_vm,,1,1,1,1
+access_infra_cluster,infra.cluster,model_infra_cluster,,1,1,1,1
+access_infra_ip,infra.ip,model_infra_ip,,1,1,1,1

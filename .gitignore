@@ -1,0 +1,22 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VS Code
+.vscode/
+
+# Environment files
+.env
+
+# Logs
+*.log
+
+# Odoo runtime data (si Docker)
+odoo-web-data/
+odoo-db-data/
+
+# Mac/Windows system files
+.DS_Store
+Thumbs.db
