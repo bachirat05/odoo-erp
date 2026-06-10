@@ -1,6 +1,10 @@
 services:
   db:
+<<<<<<< HEAD
     image: postgres:15-alpine
+=======
+    image: postgres:15
+>>>>>>> feature/access_Workflow
     container_name: odoo-db
     environment:
       POSTGRES_DB: postgres
