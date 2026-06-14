@@ -31,7 +31,7 @@
                             <field name="servers_maintenance"/>
                         </group>
                         <group>
-                            <field name="server_usage_rate" widget="percentage"/>
+                            <field name="server_usage_rate" />
                             <field name="total_ram"/>
                             <field name="total_cpu"/>
                             <field name="total_storage"/>
@@ -47,7 +47,7 @@
                             <field name="vms_allocated"/>
                         </group>
                         <group>
-                            <field name="vm_usage_rate" widget="percentage"/>
+                            <field name="vm_usage_rate" />
                             <field name="ram_allocated_vms"/>
                             <field name="cpu_allocated_vms"/>
                         </group>
